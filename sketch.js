@@ -19,7 +19,7 @@ function setup() {
 	
 	groundObject=new ground(width/2,570,width,20);
 	dustbinObj=new dustbin(850,550);
-	paperObject=new Paper(350,550);
+	paperObject=new Paper(200,450,40);
 
 	Engine.run(engine);
   
@@ -36,4 +36,19 @@ function draw() {
   paperObject.display();
 
 }
+
+function keyPressed(){
+if(keyCode === UP_ARROW){
+Matter.Body.applyForce(paperObject.body,paperObject.body.position,{x:130,y:-155});
+}
+
+}
+
+
+
+
+
+
+
+
 
