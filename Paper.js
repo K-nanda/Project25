@@ -1,5 +1,5 @@
-class Paper.js{
-    constructor(x,y){
+class Paper{
+    constructor(x,y,r){
 
         var options={
             isStatic:false ,
@@ -8,24 +8,26 @@ class Paper.js{
             density:1.2
         }
 
-        //this.image=loadImage("paper.png");
-        this.body=Bodies.rectangle(x,y,10,10,options);
+        this.image=loadImage("paper.png");
+        
 
         this.x = x;
         this.y = y;
-        this.w = 10;
-        this.h = 10;
+        this.r = r;
+
+        this.body=Bodies.circle(this.x,this.y,this.r,options);
 
         World.add(world , this.body);
     }
 
     display(){
-        rectMode(CENTRE);
-        fill(125,125,125);
-        rect(this.x,this.y,10,10);
-        //image(this.image,this.x,this.y);
+        var paperPOS = this.body.position ;
+        push();
+        translate(paperPOS.x , paperPOS.y);
 
-
+        imageMode(CENTER);
+        image(this.image , 0 , 0 , this.r , this.r);
+        pop();
     }
 
 
